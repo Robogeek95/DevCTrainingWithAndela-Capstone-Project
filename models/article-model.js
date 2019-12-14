@@ -6,7 +6,7 @@ class articleModel {
         const values = [`${article.title}`, `${article.article}`, `${article.id}`];
         const result = pool.query(query, values);
         return result;
-      }
+      } 
 }
 
 module.exports = articleModel;

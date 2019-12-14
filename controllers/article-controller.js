@@ -19,7 +19,7 @@ exports.editArticle = async (req, res, next) => {
           res.status(500).json({
             message: 'article does not exist',
           });
-        }
+        }  
   
         res.status(201).json({
           status: 'success',
