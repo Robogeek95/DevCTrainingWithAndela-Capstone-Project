@@ -7,14 +7,12 @@ class gifModel {
         const result = pool.query(query, values);
         return result;
     }
-
     static async getTest(gif) {
         const query = 'select gifid from gifs where title = $1';
         const values = [`${gif.title}`];
         const result = pool.query(query, values);
         return result;
     }
-
     static async deleteTests(gif) {
         const query = 'delete from gifs where title = $1'
         const value = [`${gif.title}`];
@@ -25,6 +23,12 @@ class gifModel {
         const query = 'select gifid, createdate, title, imageurl from gifs inner join users on gifs.userid = users.userid where gifid = $1';
         const values = [`${gif.id}`];
         const result = pool.query(query, values);
+        return result;
+    }
+    static async add(gif) {
+        const gifQuery = 'INSERT INTO gifs ("title", "imageurl", "publicid", "userid") VALUES($1, $2, $3, $4) RETURNING *';
+        const values = [`${gif.title}`, `${gif.imageUrl}`, `${gif.public_id}`, `${gif.userId}`];
+        const result = await pool.query(gifQuery, values);
         return result;
     }
 }
