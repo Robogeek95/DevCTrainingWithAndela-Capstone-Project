@@ -5,9 +5,8 @@ const router = express.Router();
 
 const auth = require('../middleware/auth');
 
-// const gifctrl = require('../controllers/gif-controller');
-// const articlectrl = require('../controllers/article-controller');
-// const feedsctrl = require('../controllers/feeds-controller');
+const gifctrl = require('../controllers/gif-controller');
 
+router.delete('/gifs/:id', auth, gifctrl.deleteGif);
 
 module.exports = router;
